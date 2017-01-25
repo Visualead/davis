@@ -55,7 +55,7 @@ if __name__ == '__main__':
 	technique = osp.splitext(osp.basename(args.input))[0]
 
 	db_eval_dict = db_read_eval(technique,raw_eval=False,
-			inputdir=osp.dirname(args.input))
+			inputdir=osp.dirname(args.input), eval_set=args.eval_set)
 
 	log.info("Displaying evaluation of: %s"%osp.basename(args.input))
 

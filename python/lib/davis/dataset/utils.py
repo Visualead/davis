@@ -197,8 +197,9 @@ def db_read_eval(technique=None,measure=None,
 	measures   = _listify(measure,
 			lambda: db_read_benchmark().measures)
 
-	techniques = _listify(technique,
-			lambda: [t.name for t in db_read_techniques()])
+    sequences = _listify(sequence,
+                         lambda: [s.name for s in db_read_sequences() if (
+                             s.set==eval_set or eval_set=='all')])
 
 	sequences = _listify(sequence,
 			lambda: [s.name for s in db_read_sequences()])
@@ -275,32 +276,28 @@ def db_save_techniques(db_eval_dict,filename=cfg.FILES.DB_BENCHMARK):
 	with open(filename,'w') as f:
 		f.write(yaml.dump(db_techniques))
 
-def db_eval_view(db_eval_dict,technique,
-		summary=False,eval_set='all'):
+def db_eval_view(db_eval_dict, technique,
+                 summary=False, eval_set='all'):
+    db_sequences = db_read_sequences()
 
-	db_sequences = db_read_sequences()
+    from prettytable import PrettyTable as ptable
+    table = ptable(
+        ["Sequence"] + ['J(M)', 'J(O)', 'J(D)', 'F(M)', 'F(O)', 'F(D)', 'T(M)'])
 
-	from prettytable import PrettyTable as ptable
-	table = ptable(["Sequence"] + ['J(M)','J(O)','J(D)','F(M)','F(O)','F(D)','T(M)'])
+    X = []
+    for key, values in db_eval_dict[technique].iteritems():
+        X.append(db_eval_dict[technique][key].values())
 
-	X = []
-	for key,values in db_eval_dict[technique].iteritems():
-		X.append(db_eval_dict[technique][key].values())
+    X = np.hstack(X)[:, :7]
+    if not summary:
+        active_db_sequences = [seq for seq in db_sequences if
+                               (seq.set == eval_set or eval_set == 'all')]
 
-	X = np.hstack(X)[:,:7]
-	if not summary:
-		for s,row in zip(db_sequences,X):
-			if eval_set == 'all' or s.set == eval_set:
-				table.add_row([s.name]+ ["{: .3f}".format(n) for n in row])
+        for s, row in zip(active_db_sequences, X):
+            table.add_row([s.name] + ["{: .3f}".format(n) for n in row])
 
+    table.add_row(['Average'] + ["{: .3f}".format(n)
+                                 for n in np.nanmean(X, axis=0)])
 
-	set_ids = [seq_id for seq_id,seq in enumerate(db_sequences)
-			if eval_set == 'all' or seq.set == eval_set]
-
-	print set_ids
-
-	table.add_row(['Average'] + ["{: .3f}".format(n)
-		for n in np.nanmean(X[set_ids],axis=0)])
-
-	print "\n" + str(table) + "\n"
-	return str(table)
+    print "\n" + str(table) + "\n"
+    return str(table)
