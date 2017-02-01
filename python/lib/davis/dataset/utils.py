@@ -73,7 +73,7 @@ def db_eval_sequence(technique, sequence, inputdir, metrics=None):
         T,t_M        : temporal stability (per-frame, mean)
 
     """
-
+    print('Evaluating sequence:' + sequence)
     db_sequence = DAVISAnnotationLoader(cfg, sequence)
     db_segmentation = DAVISSegmentationLoader(cfg, sequence,
                                               osp.join(inputdir, technique))
