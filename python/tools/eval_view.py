@@ -24,6 +24,10 @@ import numpy   as np
 import os.path as osp
 
 from prettytable import PrettyTable as ptable
+
+# To make it work from within pycharm
+# import sys
+# sys.path.insert(0, '/Users/eddie/Documents/Projects/Repositories/davis/python/lib')
 from davis.dataset import *
 from davis import log
 
