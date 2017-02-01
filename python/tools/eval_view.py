@@ -37,7 +37,7 @@ def parse_args():
 			help='Path to the HDF5 evaluation file to be displayed.')
 
 	parser.add_argument('--eval_set',default='all',type=str,
-			choices=['training','test','all'],help='Select set of videos to evaluate.')
+			choices=['training','test','gygo-test','gygo-training','all'],help='Select set of videos to evaluate.')
 
 	parser.add_argument('--summary',action='store_true',
 			help='Print dataset average instead of per-sequence results.')
