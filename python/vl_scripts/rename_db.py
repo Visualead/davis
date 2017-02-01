@@ -42,16 +42,7 @@ def rename_gygo_db(input_path, ext='.png', verbose=True):
 
 
 if __name__ == '__main__':
-    # db_path = '/Users/eddie/Documents/Projects/Repositories/davis/data/DAVIS/Results/Segmentations/variable/vl'
-    # rename_gygo_db(db_path, ext='.png')
-
-
-    ### TEMP ####
-    path='/Volumes/Public/GyGO-datasets/GyGO/GyGO-object-frames/seg_prod_t05'
-    # rename_and_start_from_0(path, ext='jpg')
-    for subdir in os.listdir(path):
-        if subdir[0] == '.':
-            continue  # invisible folder/file
-        rename_and_start_from_0(os.path.join(path, subdir), ext='JPG')
+    db_path = '/Users/eddie/Documents/Projects/Repositories/davis/data/DAVIS/Results/Segmentations/variable/vl'
+    rename_gygo_db(db_path, ext='.png')
 
 
