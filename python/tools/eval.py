@@ -26,8 +26,8 @@ import os.path as osp
 
 from prettytable import PrettyTable
 
-sys.path.insert(0,
-                '/Users/eddie/Documents/Projects/Repositories/davis/python/lib')
+# To make it work from within pycharm
+# sys.path.insert(0,'/Users/eddie/Documents/Projects/Repositories/davis/python/lib')
 from davis.dataset import db_eval, db_save_eval
 from davis import cfg, log
 
