@@ -3,7 +3,7 @@ import cv2
 import sys
 import numpy as np
 import scipy.spatial.distance as ssd
-from tstab import *
+# from tstab import *
 
 def get_bijective_pairs(pairs,costmat):
 	bij_pairs = bij_pairs_one_dim(pairs, costmat,0)
