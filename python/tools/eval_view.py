@@ -46,6 +46,10 @@ def parse_args():
 	parser.add_argument('--summary',action='store_true',
 			help='Print dataset average instead of per-sequence results.')
 
+	parser.add_argument('--output_dir', default='', type=str,
+			help='Visualead: Path to the directory where outputs will be written.')
+
+
 	# Parse command-line arguments
 	args       = parser.parse_args()
 	args.input = osp.abspath(args.input)
@@ -63,5 +67,11 @@ if __name__ == '__main__':
 
 	log.info("Displaying evaluation of: %s"%osp.basename(args.input))
 
-	db_eval_view(db_eval_dict,
-			technique,args.summary,args.eval_set)
+	import os
+	if not os.path.exists(args.output_dir):
+		os.makedirs(args.output_dir)
+
+	db_eval_view(db_eval_dict, technique,
+				 args.summary, args.eval_set,
+				 output_path_prefix=os.path.join(args.output_dir,
+											   'davis-benchmark'))

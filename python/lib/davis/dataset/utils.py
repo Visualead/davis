@@ -287,7 +287,7 @@ def db_save_techniques(db_eval_dict, filename=cfg.FILES.DB_BENCHMARK):
 
 
 def db_eval_view(db_eval_dict, technique,
-                 summary=False, eval_set='all'):
+                 summary=False, eval_set='all', output_path_prefix=''):
     db_sequences = db_read_sequences()
 
     from prettytable import PrettyTable as ptable
@@ -309,5 +309,15 @@ def db_eval_view(db_eval_dict, technique,
     table.add_row(['Average'] + ["{: .3f}".format(n)
                                  for n in np.nanmean(X, axis=0)])
 
-    print "\n" + str(table) + "\n"
-    return str(table)
+    str_table = table.get_string()
+    print "\n" + str_table + "\n"
+
+    if output_path_prefix:
+        print(output_path_prefix+'.html')
+        with open(output_path_prefix+'.html', 'w') as f:
+            f.write(table.get_html_string(border=True))
+
+        with open(output_path_prefix+'.txt', 'w') as f:
+            f.write(str_table)
+
+    return str_table
