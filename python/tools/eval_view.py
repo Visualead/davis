@@ -67,8 +67,7 @@ if __name__ == '__main__':
 
 	log.info("Displaying evaluation of: %s"%osp.basename(args.input))
 
-	import os
-	if not os.path.exists(args.output_dir):
+	if args.output_dir and not os.path.exists(args.output_dir):
 		os.makedirs(args.output_dir)
 
 	db_eval_view(db_eval_dict, technique,

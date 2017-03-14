@@ -71,7 +71,7 @@ def find_sequences(input_dir):
 if __name__ == '__main__':
     args = parse_args()
     args.input = osp.abspath(args.input)
-    sequences = find_sequences(os.path.abspath(args.input))
+    sequences = find_sequences(args.input)
 
     db_eval_dict = db_eval(osp.basename(args.input),
                            sequences, osp.dirname(args.input),
