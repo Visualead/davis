@@ -26,13 +26,13 @@ cfg = __C
 __C.PATH = edict()
 
 # Dataset Resolution  Available: 1080p,480p
-__C.RESOLUTION="480p"
+__C.RESOLUTION="variable"
 
 # Root folder of project
 __C.PATH.ROOT_DIR = osp.abspath(osp.join(osp.dirname(__file__), '..', '..','..'))
 
 # Data folder
-__C.PATH.DATA_DIR       = osp.abspath(osp.join(__C.PATH.ROOT_DIR, 'data/DAVIS'))
+__C.PATH.DATA_DIR       = osp.join('/home', 'ubuntu', 'Data', 'datasets', 'DAVIS')
 
 __C.PATH.RESULTS_DIR  = osp.abspath(osp.join(__C.PATH.DATA_DIR,  'Results'))
 
