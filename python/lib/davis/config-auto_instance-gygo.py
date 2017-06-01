@@ -33,6 +33,7 @@ __C.PATH.ROOT_DIR = osp.abspath(osp.join(osp.dirname(__file__), '..', '..','..')
 
 # Data folder
 __C.PATH.DATA_DIR       = osp.join('/home', 'ubuntu', 'Data', 'datasets', 'DAVIS')
+__C.PATH.GYGO_DATA_DIR       = osp.join('/home', 'ubuntu', 'Data', 'datasets', 'GyGO-Production')
 
 __C.PATH.RESULTS_DIR  = osp.abspath(osp.join(__C.PATH.DATA_DIR,  'Results'))
 
@@ -52,7 +53,7 @@ __C.PATH.ANNOTATION_DIR  = osp.join(__C.PATH.DATA_DIR,"Annotations",__C.RESOLUTI
 __C.FILES = edict()
 
 # Path to property file, holding information on evaluation sequences.
-__C.FILES.DB_INFO = osp.abspath(osp.join(__C.PATH.DATA_DIR,"Annotations/db_info.yml"))
+__C.FILES.DB_INFO = osp.abspath(osp.join(__C.PATH.GYGO_DATA_DIR, 'Augmentation', 'Annotations', 'db_info.yml'))
 
 # Define the set of techniques to be loaded
 __C.EVAL_SET="all" # Accepted options [paper,all]
