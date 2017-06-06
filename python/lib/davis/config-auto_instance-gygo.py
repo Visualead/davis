@@ -44,10 +44,10 @@ __C.PATH.SEGMENTATION_DIR  = osp.abspath(osp.join(__C.PATH.RESULTS_DIR,  'Segmen
 __C.PATH.EVAL_DIR     = osp.abspath(osp.join(__C.PATH.RESULTS_DIR,  'Evaluation', __C.RESOLUTION))
 
 # Path to input images
-__C.PATH.SEQUENCES_DIR   = osp.join(__C.PATH.DATA_DIR,"JPEGImages",__C.RESOLUTION)
+__C.PATH.SEQUENCES_DIR   = osp.join(__C.PATH.GYGO_DATA_DIR,"Frames")
 
 # Path to annotations
-__C.PATH.ANNOTATION_DIR  = osp.join(__C.PATH.DATA_DIR,"Annotations",__C.RESOLUTION)
+__C.PATH.ANNOTATION_DIR  = osp.join(__C.PATH.GYGO_DATA_DIR,"Annotations")
 
 # Paths to files
 __C.FILES = edict()
