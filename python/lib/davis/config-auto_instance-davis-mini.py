@@ -46,7 +46,7 @@ __C.PATH.EVAL_DIR     = osp.abspath(osp.join(__C.PATH.RESULTS_DIR,  'Evaluation'
 __C.PATH.SEQUENCES_DIR   = osp.join(__C.PATH.DATA_DIR,"JPEGImages", __C.RESOLUTION + '-mini')
 
 # Path to annotations
-__C.PATH.ANNOTATION_DIR  = osp.join(__C.PATH.DATA_DIR,"Annotations",__C.RESOLUTION + '-mini')
+__C.PATH.ANNOTATION_DIR  = osp.join(__C.PATH.DATA_DIR,"Annotations", '2016',__C.RESOLUTION + '-mini')
 
 # Paths to files
 __C.FILES = edict()
